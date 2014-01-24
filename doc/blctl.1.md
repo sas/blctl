@@ -7,7 +7,7 @@ blctl - control device backlight through linux /sys interface
 
 ## SYNOPSIS
 
-`blctl DEVICE [ up | down | get | set VAL ]
+`blctl DEVICE [ up | down | get | set VAL ]`
 
 ## DESCRIPTION
 
