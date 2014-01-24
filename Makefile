@@ -1,14 +1,14 @@
-SOURCES		:= blctl.c
-DOCSOURCES	:=
-PREFIX		:= /usr/local
+SOURCES		:= src/blctl.c
+DOCSOURCES	:= doc/blctl.1.md
 
 CC		?= g++
 CFLAGS		:= -std=c99 -Wall -Wextra -D_GNU_SOURCE
 LDFLAGS		:=
+PREFIX		:= /usr/local
 
-TARGET		:= blctl
 OBJECTS		:= $(SOURCES:.c=.o)
 DEPENDS		:= $(SOURCES:.c=.d)
+TARGET		:= src/blctl
 DOCTARGETS	:= $(DOCSOURCES:.1.md=.1)
 
 VPATH		:= $(dir $(lastword $(MAKEFILE_LIST)))
