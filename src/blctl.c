@@ -9,13 +9,7 @@ static void usage_exit(int status, const char *argv0)
 {
   FILE *output = status == EXIT_SUCCESS ? stdout : stderr;
 
-  fprintf(output, "usage: %s DEVICE [ up | down | get | set VAL ]\n"
-                  "       up:   increase level by 5%%\n"
-                  "       down: decrease level by 5%%\n"
-                  "       get:  display current level\n"
-                  "       set:  set level to VAL\n",
-          argv0);
-
+  fprintf(output, "usage: %s DEVICE [ up | down | get | set VAL ]\n", argv0);
   exit(status);
 }
 
