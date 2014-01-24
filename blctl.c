@@ -87,6 +87,8 @@ int main(int argc, const char **argv)
     new_perc = cur_perc;
   } else if (strcmp(argv[2], "set") == 0) {
     new_perc = strtoul(argv[3], NULL, 0);
+  } else {
+    usage_exit(EXIT_FAILURE, argv[0]);
   }
 
   while (cur_perc != new_perc) {
