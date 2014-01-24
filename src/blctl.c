@@ -53,10 +53,10 @@ int main(int argc, const char **argv)
 #define MIN_ARGS(NUM) do { if (argc < NUM + 1) usage_exit(EXIT_FAILURE, argv[0]); } while (0)
   char *cur_path;
   char *max_path;
-  unsigned int cur_level;
-  unsigned int max_level;
-  unsigned int cur_perc;
-  unsigned int new_perc;
+  int cur_level;
+  int max_level;
+  int cur_perc;
+  int new_perc;
 
   MIN_ARGS(1);
 
@@ -87,6 +87,12 @@ int main(int argc, const char **argv)
   } else {
     usage_exit(EXIT_FAILURE, argv[0]);
   }
+
+  if (new_perc < 0)
+    new_perc = 0;
+
+  if (new_perc > 100)
+    new_perc = 100;
 
   while (cur_perc != new_perc) {
     cur_perc += cur_perc < new_perc ? 1 : -1;
