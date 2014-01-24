@@ -1,4 +1,4 @@
-SOURCES		:= src/blctl.c
+SOURCES		:= src/blctl.c src/utils.c
 DOCSOURCES	:= doc/blctl.1.md
 
 CC		?= g++

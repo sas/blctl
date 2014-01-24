@@ -1,8 +1,8 @@
-#include <err.h>
+#include "utils.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <time.h>
 #include <unistd.h>
 
 static void usage_exit(int status, const char *argv0)
@@ -11,44 +11,6 @@ static void usage_exit(int status, const char *argv0)
 
   fprintf(output, "usage: %s DEVICE [ up | down | get | set VAL ]\n", argv0);
   exit(status);
-}
-
-static unsigned int read_val(const char *path)
-{
-  FILE *f;
-  unsigned int res;
-
-  f = fopen(path, "r");
-  if (f == NULL)
-    err(EXIT_FAILURE, "%s", path);
-
-  fscanf(f, "%u", &res);
-
-  fclose(f);
-  return res;
-}
-
-static void write_val(const char *path, unsigned int val)
-{
-  FILE *f;
-
-  f = fopen(path, "w");
-  if (f == NULL)
-    err(EXIT_FAILURE, "%s", path);
-
-  fprintf(f, "%u", val);
-
-  fclose(f);
-}
-
-static inline void millisleep(size_t ms)
-{
-  struct timespec ts = {
-    .tv_sec = 0,
-    .tv_nsec = 1000000 * ms,
-  };
-
-  nanosleep(&ts, NULL);
 }
 
 int main(int argc, const char **argv)
