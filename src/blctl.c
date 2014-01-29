@@ -75,9 +75,9 @@ int main(int argc, const char **argv)
   cur_perc = cur_level * 100 / max_level;
 
   if (strcmp(argv[2], "up") == 0) {
-    new_perc = cur_perc + 5;
+    new_perc = cur_perc + 10;
   } else if (strcmp(argv[2], "down") == 0) {
-    new_perc = cur_perc - 5;
+    new_perc = cur_perc - 10;
   } else if (strcmp(argv[2], "get") == 0) {
     printf("current level for %s: %d%%\n", argv[1], cur_perc);
     new_perc = cur_perc;
