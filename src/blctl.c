@@ -97,7 +97,7 @@ int main(int argc, const char **argv)
   while (cur_perc != new_perc) {
     cur_perc += cur_perc < new_perc ? 1 : -1;
     write_val(cur_path, cur_perc * max_level / 100);
-    millisleep(5);
+    millisleep(42);
   }
 
   free(max_path);
