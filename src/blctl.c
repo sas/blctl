@@ -7,6 +7,9 @@
 #include <string.h>
 #include <unistd.h>
 
+#define UP_DOWN_STEPS 10
+#define STEP_LATENCY  20
+
 static void usage_exit(int status, const char *argv0)
 {
   FILE *output = status == EXIT_SUCCESS ? stdout : stderr;
@@ -75,9 +78,9 @@ int main(int argc, const char **argv)
   cur_perc = cur_level * 100 / max_level;
 
   if (strcmp(argv[2], "up") == 0) {
-    new_perc = cur_perc + 10;
+    new_perc = cur_perc + UP_DOWN_STEPS;
   } else if (strcmp(argv[2], "down") == 0) {
-    new_perc = cur_perc - 10;
+    new_perc = cur_perc - UP_DOWN_STEPS;
   } else if (strcmp(argv[2], "get") == 0) {
     printf("current level for %s: %d%%\n", argv[1], cur_perc);
     new_perc = cur_perc;
@@ -97,7 +100,7 @@ int main(int argc, const char **argv)
   while (cur_perc != new_perc) {
     cur_perc += cur_perc < new_perc ? 1 : -1;
     write_val(cur_path, cur_perc * max_level / 100);
-    millisleep(42);
+    millisleep(STEP_LATENCY);
   }
 
   free(max_path);

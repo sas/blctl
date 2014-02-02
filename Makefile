@@ -3,7 +3,7 @@ DOCSOURCES	:= doc/blctl.1.md
 
 CC		?= g++
 CFLAGS		:= -std=c99 -Wall -Wextra -D_GNU_SOURCE
-LDFLAGS		:=
+LDFLAGS		:= -lm
 PREFIX		:= /usr/local
 
 OBJECTS		:= $(SOURCES:.c=.o)
